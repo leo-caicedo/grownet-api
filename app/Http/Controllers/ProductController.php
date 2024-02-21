@@ -25,6 +25,7 @@ class ProductController extends Controller
     {
         $user = Auth::user();
 
+        // name, description, price
         $newProductData = $request->json()->all();
         $newProductData['user_id'] = $user->id;
 

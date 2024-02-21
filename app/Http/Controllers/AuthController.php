@@ -13,6 +13,7 @@ class AuthController extends Controller
 {
     public function register(RegisterRequest $request)
     {
+        // name, email, password
         $newUserData = $request->json()->all();
         $user = User::create($newUserData);
 
@@ -27,6 +28,7 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
+        // email, password
         $credentials = $request->json()->all();
 
         $user = User::where('email', $credentials['email'])->firstOrFail();
