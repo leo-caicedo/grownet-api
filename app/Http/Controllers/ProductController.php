@@ -22,8 +22,6 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $request->validate();
-
         $newProductData = $request->json()->all();
         $product = Product::create($newProductData);
 

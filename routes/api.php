@@ -28,8 +28,10 @@ Route::controller(AuthController::class)->group(function () {
         ->post('/users/logout', 'logout');
 });
 
+// Rutas products
 Route::controller(ProductController::class)->group(function () {
     Route::get('/products', 'index');
-    Route::post('/products/', 'store');
     Route::get('/products/{product}', 'show');
+    Route::middleware('auth:sanctum')
+        ->post('/products/', 'store');
 });
