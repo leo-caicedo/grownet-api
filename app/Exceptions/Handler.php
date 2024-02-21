@@ -2,8 +2,10 @@
 
 namespace App\Exceptions;
 
+use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -26,5 +28,11 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    // Se sobre escribe manejador de errores para siempre retornar JSON
+    protected function convertValidationExceptionToResponse(ValidationException $e, $request)
+    {
+        return $this->invalidJson($request, $e);
     }
 }
