@@ -10,8 +10,23 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
+        'restaurant_id',
         'name',
         'description',
         'price'
     ];
+
+    // Retornar datos usuario creador y restaurante
+    protected $with = ['user', 'restaurant'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
 }

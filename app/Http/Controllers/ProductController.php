@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -22,7 +23,14 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+        $user = Auth::user();
+
         $newProductData = $request->json()->all();
+        $newProductData['user_id'] = $user->id;
+
+        // Se elige restarante de forma random
+        $newProductData['restaurant_id'] = rand(1, 5);
+
         $product = Product::create($newProductData);
 
         return response()->json(compact('product'), 201);
