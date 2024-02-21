@@ -17,7 +17,7 @@ This project is built using Laravel Sail on Docker, and MySQL as a database mana
 
 ### Previous requirements
 
-Before installing, make sure you have Docker installed on your system. You'll also need Composer to manage PHP dependencies.
+Before installing, make sure you have Docker installed on your system. You'll also need Composer to manage PHP dependencies. PHP ^8.1 is required
 
 ## Installation
 Steps to follow
@@ -28,7 +28,14 @@ git clone https://github.com/leo-caicedo/grownet-api.git
 cd grownet-api
 ```
 ```
-cp .env-example .env
+cp .env.example .env
+```
+Add Sail PHP ^8.1 is required
+```
+composer require  laravel/sail  --dev
+```
+```
+php artisan  sail:install
 ```
 Create containers
 ```
