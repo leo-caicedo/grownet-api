@@ -30,7 +30,12 @@ cd grownet-api
 ```
 cp .env.example .env
 ```
-Add Sail PHP ^8.1 is required
+Add Sail, PHP ^8.1 is required
+
+Make sure you have the following extensions
+```
+sudo apt-get install php8.0-bcmath php8.0-ctype php8.0-fileinfo php8.0-json php8.0-mbstring php8.0-opcache php8.0-pdo php8.0-tokenizer php8.0-xml
+```
 ```
 composer require  laravel/sail  --dev
 ```
